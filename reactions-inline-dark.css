@@ -1,0 +1,132 @@
+@import url("https://giscus.app/themes/dark.css");
+
+/* Keep text readable inside the narrow iframe. */
+html {
+  font-size: 16px !important;
+}
+
+.gsc-emoji {
+  font-size: 20px !important;
+}
+
+/* Keep only the compact post reaction control. */
+html,
+body,
+main {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  background: transparent !important;
+}
+
+.gsc-comments,
+.gsc-reactions-count,
+.gsc-direct-reaction-buttons {
+  display: none !important;
+}
+
+.gsc-main {
+  display: block !important;
+  min-height: 36px !important;
+}
+
+.gsc-reactions {
+  display: block !important;
+  margin: 0 !important;
+}
+
+.gsc-reactions > div {
+  display: block !important;
+  margin: 0 !important;
+}
+
+.gsc-reactions-menu {
+  display: block !important;
+  position: relative !important;
+  margin: 0 !important;
+}
+
+.gsc-reactions-menu > summary {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 !important;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.gsc-reactions-menu > summary svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Include the open picker in the iframe's measured height. */
+.gsc-reactions-popover {
+  display: none !important;
+}
+
+.gsc-reactions-menu[open] .gsc-reactions-popover {
+  display: block !important;
+  position: static !important;
+  transform: none !important;
+  visibility: visible !important;
+  box-sizing: border-box;
+  width: 224px !important;
+  max-width: calc(100vw - 8px);
+  margin: 8px 0 8px !important;
+}
+
+.gsc-reactions-popover::before,
+.gsc-reactions-popover::after {
+  display: none !important;
+}
+
+.gsc-reactions-popover p {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+.gsc-reactions-popover .gsc-emoji-button {
+  width: 36px;
+  height: 36px;
+}
+
+/* Use a compact loading indicator for the inline control. */
+.gsc-loading {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  height: 36px;
+}
+
+.gsc-loading-image,
+.gsc-loading-text {
+  display: none !important;
+}
+
+.gsc-loading::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  margin: 9px;
+  border: 2px solid #8c959f;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: pho-spin .8s linear infinite;
+}
+
+@keyframes pho-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gsc-loading::after {
+    animation: none;
+  }
+}
