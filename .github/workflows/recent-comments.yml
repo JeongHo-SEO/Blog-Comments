@@ -1,0 +1,51 @@
+name: Update recent comments
+
+on:
+  discussion:
+    types: [created, edited, deleted, transferred, category_changed]
+  discussion_comment:
+    types: [created, edited, deleted]
+  push:
+    branches: [main]
+    paths:
+      - scripts/build_recent_comments.py
+      - feed-config.json
+      - .github/workflows/recent-comments.yml
+  workflow_dispatch:
+  schedule:
+    - cron: '23 3 * * *'
+
+permissions:
+  contents: write
+  discussions: read
+
+concurrency:
+  group: recent-comments
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build public feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/build_recent_comments.py
+      - name: Save changed feed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add recent-comments.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m 'Update recent comments'
+          git pull --rebase origin main
+          git push origin HEAD:main
