@@ -147,3 +147,32 @@ main {
     animation: none;
   }
 }
+
+
+/* Show friendly labels for the thumbs-up and thumbs-down reactions. */
+.gsc-reactions-popover:has(
+  .gsc-emoji-button:nth-child(1):enabled:is(:hover, :focus-visible),
+  .gsc-emoji-button:nth-child(2):enabled:is(:hover, :focus-visible)
+) > p:not(:has(a)) {
+  font-size: 0 !important;
+}
+
+.gsc-reactions-popover:has(
+  .gsc-emoji-button:nth-child(1):enabled:is(:hover, :focus-visible),
+  .gsc-emoji-button:nth-child(2):enabled:is(:hover, :focus-visible)
+) > p:not(:has(a))::after {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.gsc-reactions-popover:has(
+  .gsc-emoji-button:nth-child(1):enabled:is(:hover, :focus-visible)
+) > p:not(:has(a))::after {
+  content: "Like";
+}
+
+.gsc-reactions-popover:has(
+  .gsc-emoji-button:nth-child(2):enabled:is(:hover, :focus-visible)
+) > p:not(:has(a))::after {
+  content: "Dislike";
+}
