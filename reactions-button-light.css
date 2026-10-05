@@ -1,0 +1,149 @@
+@import url("https://giscus.app/themes/light.css");
+
+/* Keep text readable inside the compact iframe. */
+html {
+  font-size: 16px !important;
+}
+
+html,
+body,
+main {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  background: transparent !important;
+}
+
+.gsc-emoji {
+  font-size: 20px !important;
+}
+
+/* Reaction badges are displayed by the parent page. */
+.gsc-comments,
+.gsc-reactions-count,
+.gsc-direct-reaction-buttons {
+  display: none !important;
+}
+
+.gsc-main {
+  display: block !important;
+  min-height: 44px !important;
+}
+
+.gsc-reactions,
+.gsc-reactions > div {
+  display: block !important;
+  margin: 0 !important;
+}
+
+.gsc-reactions-menu {
+  display: block !important;
+  position: relative !important;
+  margin: 0 !important;
+}
+
+/* The entire native summary is the clickable React button. */
+.gsc-reactions-menu > summary {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 156px;
+  height: 44px;
+  margin: 0 !important;
+  padding: 6px 0 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 1px solid #cedbe8;
+  border-radius: 7px;
+  background: #f3f6fa;
+  color: #215d99;
+  list-style: none;
+  text-decoration: none !important;
+}
+
+.gsc-reactions-menu > summary::before {
+  display: block !important;
+  content: "React" !important;
+  position: static !important;
+  font: 15px Arial, sans-serif;
+}
+
+.gsc-reactions-menu > summary svg {
+  width: 20px;
+  height: 20px;
+}
+
+.gsc-reactions-menu > summary:focus-visible {
+  outline: 2px solid #398be0;
+  outline-offset: -3px;
+}
+
+/* Include the picker in the iframe's measured height. */
+.gsc-reactions-popover {
+  display: none !important;
+}
+
+.gsc-reactions-menu[open] .gsc-reactions-popover {
+  display: block !important;
+  position: static !important;
+  transform: none !important;
+  visibility: visible !important;
+  box-sizing: border-box;
+  width: 224px !important;
+  max-width: calc(100vw - 8px);
+  margin: 8px 0 8px !important;
+}
+
+.gsc-reactions-popover::before,
+.gsc-reactions-popover::after {
+  display: none !important;
+}
+
+.gsc-reactions-popover p {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+.gsc-reactions-popover .gsc-emoji-button {
+  width: 36px;
+  height: 36px;
+}
+
+/* Compact loading indicator */
+.gsc-loading {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  height: 44px;
+}
+
+.gsc-loading-image,
+.gsc-loading-text {
+  display: none !important;
+}
+
+.gsc-loading::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  margin: 9px;
+  border: 2px solid #8c959f;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: pho-spin .8s linear infinite;
+}
+
+@keyframes pho-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gsc-loading::after {
+    animation: none;
+  }
+}
